@@ -17,7 +17,7 @@ def load_model():
         num_classes = checkpoint['num_classes']
 
         # 🔥 recreate model EXACTLY like training
-        model = EfficientNet.from_pretrained('efficientnet-b0')
+        model = EfficientNet.from_name('efficientnet-b0')
         model._fc = torch.nn.Linear(model._fc.in_features, num_classes)
 
         # load weights
