@@ -2,7 +2,7 @@ import torch
 from efficientnet_pytorch import EfficientNet
 
 model = None
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
 
 # store metadata globally
 class_names = None
@@ -16,7 +16,7 @@ def load_model():
 
         num_classes = checkpoint['num_classes']
 
-        # 🔥 recreate model EXACTLY like training
+        # recreate model EXACTLY like training
         model = EfficientNet.from_name('efficientnet-b0')
         model._fc = torch.nn.Linear(model._fc.in_features, num_classes)
 

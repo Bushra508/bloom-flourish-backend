@@ -14,3 +14,10 @@ app.add_middleware(
 )
 
 app.include_router(router)
+
+from app.core.model import load_model
+
+@app.on_event("startup")
+def startup_event():
+    load_model()
+    print("✅ Model loaded at startup")

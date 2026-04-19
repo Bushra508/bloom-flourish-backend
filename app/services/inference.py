@@ -21,5 +21,5 @@ def predict(image_tensor):
             "label": pretty_names[idx],
             "confidence": float(top_probs[0][i].item())
         })
-
+    
     return results
